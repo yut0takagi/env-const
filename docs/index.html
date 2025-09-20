@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Docs Landing Page</title>
+    <meta name="description" content="プロジェクトドキュメントのランディングページ" />
+    <style>
+      :root {
+        --bg: #0f172a;
+        --panel: #111827;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #22d3ee;
+        --accent-2: #60a5fa;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, 'Apple Color Emoji', 'Segoe UI Emoji';
+        background: #0b1220;
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+        position: relative;
+      }
+      #gpu-wrap { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+      #gpu-canvas { width: 100%; height: 100%; display: block; }
+      .overlay-gradient { position: fixed; inset: 0; background: radial-gradient(1200px 600px at 20% 10%, rgba(96,165,250,0.18), transparent 60%), radial-gradient(900px 600px at 80% 20%, rgba(34,211,238,0.14), transparent 55%), radial-gradient(1200px 800px at 50% 110%, rgba(15,23,42,0.9), rgba(15,23,42,1)); z-index: 1; pointer-events: none; mix-blend-mode: screen; opacity: .9; }
+      header {
+        padding: 56px 20px 28px;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(28px, 5vw, 40px);
+        letter-spacing: 0.2px;
+      }
+      p.lead {
+        margin: 0 auto;
+        max-width: 800px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.65;
+      }
+      main {
+        max-width: 980px;
+        margin: 24px auto 80px;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 16px;
+      }
+      .card {
+        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 14px;
+        padding: 18px 18px 16px;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.2s ease;
+        transform-origin: 50% 60%;
+        backdrop-filter: blur(0.5px);
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255,255,255,0.2);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+      }
+      .card a { text-decoration: none; color: inherit; display: block; }
+      .card h3 { margin: 0 0 6px; font-size: 18px; }
+      .card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+      footer {
+        text-align: center; color: var(--muted); font-size: 12px; padding: 28px 16px 40px; position: relative; z-index: 2;
+      }
+      .badge {
+        display: inline-block;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #0b1220;
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: .3px;
+        margin-bottom: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="gpu-wrap"><canvas id="gpu-canvas"></canvas><div class="overlay-gradient"></div></div>
+    <header>
+      <div class="badge">Docs</div>
+      <h1>プロジェクト ドキュメント</h1>
+      <p class="lead">
+        よく使うガイドとチートシートをまとめています。各ページの右下のトーストから、いつでもこのランディングページへ戻れます。
+      </p>
+    </header>
+    <main>
+      <div class="grid">
+        <div class="card"><a href="./ventura-chic/"><h3>Ventura風 抽象アート（Chic）</h3><p>WebGPU + SDF + Bloom の上質演出。</p></a></div>
+        <div class="card"><a href="./react-overview.html"><h3>React 概要ガイド</h3><p>基礎から実務の要点までを素早く復習。</p></a></div>
+        <div class="card"><a href="./ml-overview.html"><h3>機械学習・AI 開発ガイド</h3><p>前処理から学習・評価・サービングまで俯瞰。</p></a></div>
+        <div class="card"><a href="./docker-dev-setup.html"><h3>Docker 開発環境ガイド</h3><p>Web/デスクトップ/ネイティブ + Python バックエンド。</p></a></div>
+        <div class="card"><a href="./windows-beginner-setup.html"><h3>Windows 超入門セットアップ</h3><p>Docker/Git/VS Code を最短で。</p></a></div>
+        <div class="card"><a href="./python-basics.html"><h3>Python 初期文法まとめ</h3><p>最初に知ると楽になる基礎文法。</p></a></div>
+        <div class="card"><a href="./SQL-CheetSheet.html"><h3>SQL チートシート</h3><p>クエリの基本とよく使う構文。</p></a></div>
+      </div>
+    </main>
+    <footer>
+      © <span id="y"></span> Docs. Hosted with GitHub Pages.
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-7f3VQXb1rK6i8b0o7laP6Gp5CHo+gQ9Pz0yV8JQd7wzv2qVd+oKneA6J3LxN7zVcy+f8m+1p7tXH4i1L3mS3xQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      // Footer year
+      document.getElementById('y').textContent = new Date().getFullYear();
+
+      // Anime.js entrance animations
+      document.addEventListener('DOMContentLoaded', () => {
+        anime({ targets: '.badge', translateY: [-8, 0], opacity: [0, 1], duration: 700, easing: 'spring(1, 80, 10, 0)' });
+        anime({ targets: 'h1', translateY: [12, 0], opacity: [0, 1], delay: 80, duration: 800, easing: 'easeOutCubic' });
+        anime({ targets: '.lead', translateY: [12, 0], opacity: [0, 1], delay: 180, duration: 800, easing: 'easeOutCubic' });
+        anime({
+          targets: '.card',
+          translateY: [8, 0],
+          opacity: [0, 1],
+          delay: anime.stagger(60, { start: 250 }),
+          duration: 700,
+          easing: 'easeOutCubic'
+        });
+
+        // Hover lift and subtle scale with Anime.js
+        document.querySelectorAll('.card').forEach((el) => {
+          el.addEventListener('mouseenter', () => {
+            anime.remove(el);
+            anime({ targets: el, scale: 1.02, duration: 160, easing: 'easeOutQuad' });
+          });
+          el.addEventListener('mouseleave', () => {
+            anime.remove(el);
+            anime({ targets: el, scale: 1.0, duration: 200, easing: 'easeOutQuad' });
+          });
+        });
+      });
+
+      // WebGPU animated background (with Canvas2D fallback)
+      async function initWebGPU() {
+        const canvas = document.getElementById('gpu-canvas');
+        if (!('gpu' in navigator)) throw new Error('WebGPU not supported');
+
+        const adapter = await navigator.gpu.requestAdapter();
+        if (!adapter) throw new Error('No GPU adapter');
+        const device = await adapter.requestDevice();
+
+        const context = canvas.getContext('webgpu');
+        const format = navigator.gpu.getPreferredCanvasFormat();
+
+        function resize() {
+          const dpr = Math.min(2, window.devicePixelRatio || 1);
+          const w = Math.floor(canvas.clientWidth * dpr);
+          const h = Math.floor(canvas.clientHeight * dpr);
+          if (canvas.width !== w || canvas.height !== h) {
+            canvas.width = w; canvas.height = h;
+            context.configure({ device, format, alphaMode: 'premultiplied' });
+          }
+        }
+        // Ensure initial CSS size
+        function ensureClientSize() {
+          const rect = canvas.getBoundingClientRect();
+          if (canvas.clientWidth === 0 || canvas.clientHeight === 0) {
+            canvas.style.width = window.innerWidth + 'px';
+            canvas.style.height = window.innerHeight + 'px';
+          }
+        }
+        ensureClientSize();
+        resize();
+        window.addEventListener('resize', () => { ensureClientSize(); resize(); updateResolution(); });
+
+        const shader = /* wgsl */ `
+struct Uniforms {
+  resolution: vec2<f32>,
+  time: f32,
+  _pad: f32,
+};
+@group(0) @binding(0) var<uniform> U: Uniforms;
+
+struct VSOut { @builtin(position) pos: vec4<f32> };
+
+@vertex
+fn vs_main(@builtin(vertex_index) vid: u32) -> VSOut {
+  var positions = array<vec2<f32>, 3>(
+    vec2<f32>(-1.0, -3.0),
+    vec2<f32>(-1.0,  1.0),
+    vec2<f32>( 3.0,  1.0)
+  );
+  var out: VSOut;
+  out.pos = vec4<f32>(positions[vid], 0.0, 1.0);
+  return out;
+}
+
+// Helpers
+fn hash(p: vec2<f32>) -> f32 {
+  return fract(sin(dot(p, vec2<f32>(12.9898,78.233))) * 43758.5453);
+}
+fn noise(p: vec2<f32>) -> f32 {
+  let i = floor(p);
+  let f = fract(p);
+  let a = hash(i + vec2<f32>(0.0,0.0));
+  let b = hash(i + vec2<f32>(1.0,0.0));
+  let c = hash(i + vec2<f32>(0.0,1.0));
+  let d = hash(i + vec2<f32>(1.0,1.0));
+  let u = f*f*(3.0-2.0*f);
+  return mix(mix(a,b,u.x), mix(c,d,u.x), u.y);
+}
+fn fbm(mut p: vec2<f32>) -> f32 {
+  var v = 0.0; var a = 0.5;
+  for (var i = 0; i < 5; i = i + 1) { v += a*noise(p); p = p*2.0 + vec2<f32>(17.1,29.3); a *= 0.5; }
+  return v;
+}
+fn cubic(p0: vec2<f32>, p1: vec2<f32>, p2: vec2<f32>, p3: vec2<f32>, t: f32) -> vec2<f32> {
+  let it = 1.0 - t;
+  return it*it*it*p0 + 3.0*it*it*t*p1 + 3.0*it*t*t*p2 + t*t*t*p3;
+}
+fn dcubic(p0: vec2<f32>, p1: vec2<f32>, p2: vec2<f32>, p3: vec2<f32>, t: f32) -> vec2<f32> {
+  let it = 1.0 - t;
+  return 3.0*it*it*(p1-p0) + 6.0*it*t*(p2-p1) + 3.0*t*t*(p3-p2);
+}
+fn smin(a: f32, b: f32, k: f32) -> f32 {
+  let h = clamp(0.5 + 0.5*(b - a)/k, 0.0, 1.0);
+  return mix(b, a, h) - k*h*(1.0 - h);
+}
+
+struct Hit { d: f32, t: f32, q: vec2<f32>, n: vec2<f32>, w: f32, col: vec3<f32> };
+fn width_at(base: f32, falloff: f32, t: f32) -> f32 {
+  let s = t - 0.5; return base * (1.0 - falloff * s * s);
+}
+
+fn ribbon_hit(p: vec2<f32>, p0: vec2<f32>, p1: vec2<f32>, p2: vec2<f32>, p3: vec2<f32>, baseW: f32, falloff: f32, cA: vec3<f32>, cB: vec3<f32>, idx: f32) -> Hit {
+  var bestD = 1e9; var bestT = 0.0; var bestQ = vec2<f32>(0.0,0.0);
+  // sample curve for closest point
+  let steps = 44;
+  for (var i = 0; i <= steps; i = i + 1) {
+    let t = f32(i) / f32(steps);
+    let q = cubic(p0,p1,p2,p3,t);
+    let d = distance(p,q);
+    if (d < bestD) { bestD = d; bestT = t; bestQ = q; }
+  }
+  let tan = normalize(dcubic(p0,p1,p2,p3,bestT) + vec2<f32>(1e-5,0.0));
+  let nrm = normalize(vec2<f32>(-tan.y, tan.x));
+  var w = width_at(baseW, falloff, bestT);
+  let n = fbm(bestQ*1.5 + idx*9.0 + vec2<f32>(U.time*0.02, U.time*0.017));
+  w *= (0.86 + 0.08 * (n - 0.5) * 2.0);
+  let hue = fbm(vec2<f32>(bestT*2.8 + idx, bestT*1.6 - idx));
+  let col = mix(cA, cB, smoothstep(0.0, 1.0, bestT)) * (0.82 + 0.12*hue);
+  return Hit(bestD, bestT, bestQ, nrm, w, col);
+}
+
+@fragment
+fn fs_main(@builtin(position) frag: vec4<f32>) -> @location(0) vec4<f32> {
+  let res = U.resolution;
+  let uv = frag.xy / res;
+  let aspect = res.x / max(1.0, res.y);
+  let p = (uv - vec2<f32>(0.5,0.5)) * vec2<f32>(aspect, 1.0);
+
+  // base deep navy gradient
+  var accum = mix(vec3<f32>(0.016, 0.022, 0.048), vec3<f32>(0.024, 0.030, 0.060), uv.y);
+
+  // chic palette
+  let pal0 = vec3<f32>(1.00*0.90, 0.58*0.90, 0.22*0.90);
+  let pal1 = vec3<f32>(1.00*0.90, 0.66*0.90, 0.48*0.90);
+  let pal2 = vec3<f32>(0.94*0.90, 0.30*0.90, 0.60*0.90);
+  let pal3 = vec3<f32>(0.70*0.90, 0.44*0.90, 0.92*0.90);
+
+  // control points per ribbon (slight time drift)
+  let t = U.time * 0.26; // subtle drift
+  for (var i = 0; i < 4; i = i + 1) {
+    let fi = f32(i);
+    let y0 = -0.75 + fi*0.42;
+    let y3 =  0.72 - fi*0.40;
+    let p0 = vec2<f32>(-1.35, y0);
+    let p3 = vec2<f32>( 1.35, y3);
+    var p1 = vec2<f32>(-0.32, y0 + 0.62) + 0.10 * vec2<f32>(sin(t + 1.2*fi),  cos(t*0.85 + 0.6*fi));
+    var p2 = vec2<f32>( 0.48, y3 - 0.58) + 0.10 * vec2<f32>(cos(t*0.8 + 0.4*fi), sin(t + 0.9*fi));
+    let width = 0.26 - fi*0.045;
+    let fall  = 0.30;
+    let cA = select(pal0, select(pal1, select(pal2, pal3, fi>=3.0), fi>=2.0), fi>=1.0);
+    let cB = select(pal1, select(pal2, select(pal3, pal0, fi>=3.0), fi>=2.0), fi>=1.0);
+
+    let h = ribbon_hit(p, p0,p1,p2,p3, width, fall, cA, cB, fi);
+    let sdf = h.d - h.w;
+    let aa = fwidth(sdf) * 0.65 + 0.0005;
+    let cov = 1.0 - smoothstep(0.0, aa, sdf);
+    let ridge = exp(- (sdf*sdf) / (max(1e-4, h.w*h.w*0.06)));
+    let lightDir = normalize(vec2<f32>(0.36, -0.84));
+    let spec = pow(max(dot(h.n, lightDir), 0.0), 12.0) * ridge * 1.2;
+    let band = h.col * (0.62 + 0.38 * fbm(h.q * 0.7 + vec2<f32>(U.time*0.018, -U.time*0.012))) + spec * vec3<f32>(1.0,0.92,0.82);
+    accum = mix(accum, band, clamp(cov * (0.85 - fi*0.07), 0.0, 1.0));
+  }
+
+  // subtle dither
+  let d = (hash(frag.xy) - 0.5) * (1.0/255.0);
+  return vec4<f32>(accum + vec3<f32>(d), 1.0);
+}
+`;
+
+        const module = device.createShaderModule({ code: shader });
+        const pipeline = await device.createRenderPipelineAsync({
+          layout: 'auto',
+          vertex: { module, entryPoint: 'vs_main' },
+          fragment: { module, entryPoint: 'fs_main', targets: [{ format }] },
+          primitive: { topology: 'triangle-list' },
+        });
+
+        const uniformBuffer = device.createBuffer({ size: 256, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
+        const bindGroup = device.createBindGroup({ layout: pipeline.getBindGroupLayout(0), entries: [{ binding: 0, resource: { buffer: uniformBuffer } }] });
+
+        function updateResolution() {
+          const res = new Float32Array([canvas.width, canvas.height, 0, 0]);
+          device.queue.writeBuffer(uniformBuffer, 0, res);
+        }
+        updateResolution();
+
+        let start = performance.now();
+        function frame() {
+          const now = performance.now();
+          const t = (now - start) / 1000;
+          // write time at offset 8 (after vec2)
+          device.queue.writeBuffer(uniformBuffer, 8, new Float32Array([t]));
+
+          const encoder = device.createCommandEncoder();
+          const textureView = context.getCurrentTexture().createView();
+          const pass = encoder.beginRenderPass({
+            colorAttachments: [{ view: textureView, loadOp: 'clear', storeOp: 'store', clearValue: { r: 0.05, g: 0.08, b: 0.14, a: 1 } }],
+          });
+          pass.setPipeline(pipeline);
+          pass.setBindGroup(0, bindGroup);
+          pass.draw(3, 1, 0, 0);
+          pass.end();
+          device.queue.submit([encoder.finish()]);
+
+          requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      function initCanvasFallback() {
+        const canvas = document.getElementById('gpu-canvas');
+        const ctx = canvas.getContext('2d');
+        const dpr = Math.min(2, window.devicePixelRatio || 1);
+        function resize() {
+          canvas.width = Math.floor(canvas.clientWidth * dpr);
+          canvas.height = Math.floor(canvas.clientHeight * dpr);
+        }
+        ctx.globalCompositeOperation = 'lighter';
+        resize();
+        window.addEventListener('resize', resize);
+        let start = performance.now();
+        function loop() {
+          const t = (performance.now() - start) / 1000;
+          const w = canvas.width, h = canvas.height;
+          ctx.clearRect(0,0,w,h);
+
+          // base gradient background
+          const bg = ctx.createLinearGradient(0, 0, 0, h);
+          bg.addColorStop(0, 'rgba(10,16,28,1)');
+          bg.addColorStop(1, 'rgba(15,23,42,1)');
+          ctx.fillStyle = bg; ctx.fillRect(0,0,w,h);
+
+          // three drifting blobs with warm chic colors
+          const blobs = [
+            { phase: 0.0, color: 'rgba(251,146,60,0.20)' },  // amber
+            { phase: 2.1, color: 'rgba(239,68,68,0.16)' },   // red
+            { phase: 4.2, color: 'rgba(168,85,247,0.14)' },  // violet
+          ];
+          blobs.forEach((b, i) => {
+            const cx = w*(0.5 + Math.sin(t*0.20 + b.phase) * (0.25 + 0.05*i));
+            const cy = h*(0.5 + Math.cos(t*0.16 + b.phase*1.3) * (0.20 + 0.06*i));
+            const r = Math.max(w, h) * (0.45 - i*0.06);
+            const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+            g.addColorStop(0.0, b.color);
+            g.addColorStop(1.0, 'rgba(0,0,0,0)');
+            ctx.fillStyle = g;
+            ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2); ctx.fill();
+          });
+          requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+      }
+
+      (async () => {
+        const ua = navigator.userAgent || '';
+        const isIOS = /iP(hone|ad|od)/.test(ua);
+        const isSecure = location.protocol === 'https:' || location.hostname === 'localhost';
+        const hasWebGPU = 'gpu' in navigator;
+        const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!prefersReduced && hasWebGPU && isSecure && !isIOS) {
+          try { await initWebGPU(); return; }
+          catch (e) { console.warn('WebGPU failed, falling back to Canvas:', e); }
+        }
+        initCanvasFallback();
+      })();
+    </script>
+  </body>
+  </html>

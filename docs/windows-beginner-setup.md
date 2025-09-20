@@ -1,3 +1,14 @@
+---
+title: Windows向け 超入門: 必要アプリの意味と入手先（Docker + Git + VS Code）
+---
+
+<!-- LP Toast: ランディングに戻る -->
+<a href="./index.html" class="lp-toast">← LPに戻る</a>
+<style>
+.lp-toast{position:fixed;right:16px;bottom:16px;background:#111;color:#fff;padding:10px 14px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.28);text-decoration:none;font-weight:600;z-index:9999;opacity:.95}
+.lp-toast:hover{opacity:1;transform:translateY(-1px)}
+</style>
+
 # Windows向け 超入門: 必要アプリの意味と入手先（Docker + Git + VS Code）
 
 コーディング未経験の方向けに、まず「何を入れるのか」「どこから入手するのか」「それは何のためか」を最短でまとめました。難しい設定は極力不要。インストール後はすぐにプロジェクトを起動できます。

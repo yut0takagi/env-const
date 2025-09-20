@@ -1,3 +1,14 @@
+---
+title: Dockerベース開発環境ガイド（Web/デスクトップ/ネイティブ + Python/AI バックエンド）
+---
+
+<!-- LP Toast: ランディングに戻る -->
+<a href="./index.html" class="lp-toast">← LPに戻る</a>
+<style>
+.lp-toast{position:fixed;right:16px;bottom:16px;background:#111;color:#fff;padding:10px 14px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.28);text-decoration:none;font-weight:600;z-index:9999;opacity:.95}
+.lp-toast:hover{opacity:1;transform:translateY(-1px)}
+</style>
+
 # Dockerベース開発環境ガイド（Web/デスクトップ/ネイティブ + Python/AI バックエンド）
 
 本ドキュメントは、Docker を用いて Web フロントエンド、デスクトップアプリ、ネイティブ（モバイル）アプリの開発を行い、AI を多用する Python バックエンドを支えるための、ローカル開発環境の標準構築手順をまとめたものです。

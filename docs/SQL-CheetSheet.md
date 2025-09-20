@@ -1,3 +1,14 @@
+---
+title: SQL チートシート
+---
+
+<!-- LP Toast: ランディングに戻る -->
+<a href="./index.html" class="lp-toast">← LPに戻る</a>
+<style>
+.lp-toast{position:fixed;right:16px;bottom:16px;background:#111;color:#fff;padding:10px 14px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.28);text-decoration:none;font-weight:600;z-index:9999;opacity:.95}
+.lp-toast:hover{opacity:1;transform:translateY(-1px)}
+</style>
+
 # SQL チートシート
 ---
 ## SQLとは
